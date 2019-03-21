@@ -1,3 +1,4 @@
+require 'pry'
 class Student
   attr_accessor :id, :name, :grade
 
@@ -66,6 +67,7 @@ class Student
     sql = <<-SQL
       SELECT * FROM students WHERE grade < 12
       SQL
-    DB[:conn].execute(sql) {|element| self.new_from_db(element)}
+    temp = DB[:conn].execute(sql) {|element| self.new_from_db(element)}
+    binding.pry
   end
 end
