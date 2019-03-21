@@ -66,6 +66,6 @@ class Student
     sql = <<-SQL
       SELECT * FROM students WHERE grade < 12
       SQL
-    DB[:conn].execute(sql)
+    DB[:conn].execute(sql) {|element| self.new_from_db(element)}
   end
 end
