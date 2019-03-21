@@ -60,7 +60,7 @@ class Student
     sql = <<-SQL
       SELECT * FROM students WHERE grade = 9
       SQL
-    DB[:conn].execute(sql)
+    DB[:conn].execute(sql).map {|element| self.new_from_db(element)}
   end
 
   def self.students_below_12th_grade
@@ -68,6 +68,5 @@ class Student
       SELECT * FROM students WHERE grade < 12
       SQL
     DB[:conn].execute(sql).map {|element| self.new_from_db(element)}
-    #binding.pry
   end
 end
