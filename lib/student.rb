@@ -67,7 +67,7 @@ class Student
     sql = <<-SQL
       SELECT * FROM students WHERE grade < 12
       SQL
-    temp = DB[:conn].execute(sql) {|element| self.new_from_db(element)}
+    temp = DB[:conn].execute(sql).map {|element| self.new_from_db(element)}
     binding.pry
   end
 end
