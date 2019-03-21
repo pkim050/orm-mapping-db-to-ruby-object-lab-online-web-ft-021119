@@ -68,6 +68,6 @@ class Student
       SELECT * FROM students WHERE grade < 12
       SQL
     temp = DB[:conn].execute(sql).map {|element| self.new_from_db(element)}
-    binding.pry
+    #binding.pry
   end
 end
